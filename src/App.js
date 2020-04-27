@@ -10,11 +10,23 @@ const itemsFromBackend = [
 const columnsFromBackend =
 {
   [uuid()]: {
-    name: "Todo",
+    name: "Requested",
     items: itemsFromBackend
   },
   [uuid()]: {
+    name: "To do",
+    items: []
+  },
+  [uuid()]: {
     name: "In Progress",
+    items: []
+  },
+  [uuid()]: {
+    name: "Done",
+    items: []
+  },
+  [uuid()]: {
+    name: "Rejected",
     items: []
   }
 };
@@ -60,7 +72,7 @@ function App() {
   const [columns, setColumns] = useState(columnsFromBackend);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', height: '100%' }}>
       <DragDropContext onDragEnd={(result) => onDragEnd(result, columns, setColumns)}>
         {Object.entries(columns).map(([id, column]) => {
           return (
